@@ -78,7 +78,7 @@ class MessagingExampleApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Messaging Example App',
-      theme: ThemeData.light(),
+      theme: ThemeData.dark(),
       routes: {
         '/': (context) =>const Application(),
         '/message': (context) => const MessageView(),
@@ -165,15 +165,7 @@ class _Application extends State<Application> {
       body: SingleChildScrollView(
         child: Column(
           children: const [
-            Padding(
-              padding: EdgeInsets.all(16),
-              child: Center(
-                child: Text(
-                  'Notifications List',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
+          
             MessageList(),
           ],
         ),
