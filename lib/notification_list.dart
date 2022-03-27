@@ -145,4 +145,9 @@ class DatabaseHelper {
     Database db = await instance.database;
     return await db.insert('notification', grocery.toMap());
   }
+
+   Future<int> remove(int id) async {
+    Database db = await instance.database;
+    return await db.delete('notification', where: 'id = ?', whereArgs: [id]);
+  }
 }
