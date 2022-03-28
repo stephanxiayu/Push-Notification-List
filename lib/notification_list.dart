@@ -59,20 +59,27 @@ class _MessageList extends State<MessageList> {
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 children: snapshot.data!.map((grocery) {
-                  return Container(decoration: BoxDecoration(
-        
-            border: Border.all(
-                color: Colors.amber, // Set border color
-                width: 3.0),   // Set border width
-            borderRadius: BorderRadius.all(
-                Radius.circular(10.0)), // Set rounded corner radius
-            boxShadow: [BoxShadow(blurRadius: 10,color: Colors.black,offset: Offset(1,3))] // Make rounded corner of border
-        ),
-                    child: Column(children:[ Text(grocery.name),
-                     Text(grocery.text),
-                     Text(DateTime.now().toString(),)
-                  
-                     ]
+                  return GestureDetector(onLongPress: () {
+                                setState(() {
+                                  DatabaseHelper.instance.remove(grocery.id!);
+                                });
+                              },
+                            
+                    child: Container(decoration: BoxDecoration(
+                          
+                              border: Border.all(
+                                  color: Colors.amber, // Set border color
+                                  width: 3.0),   // Set border width
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0)), // Set rounded corner radius
+                              boxShadow: [BoxShadow(blurRadius: 10,color: Colors.black,offset: Offset(1,3))] // Make rounded corner of border
+                          ),
+                      child: Column(children:[ Text(grocery.name),
+                       Text(grocery.text),
+                       Text(DateTime.now().toString(),)
+                    
+                       ]
+                      ),
                     ),
                   );
                 }).toList(),
